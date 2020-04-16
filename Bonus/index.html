@@ -10,30 +10,50 @@
     <!-- title -->
     <title>Oggetti Studenti Bonus</title>
   </head>
+
   <body>
+
     <main>
-      <div class="scheda-studente flex-container">
-        <!-- flex-item 1 (img) -->
-        <img src="https://www.allthetests.com/quiz22/picture/pic_1171831236_1.png" alt="avatar">
-        <!-- flex-item 2 (credenziali)-->
-        <div class="credenziali flex-container">
-          <div class="box nome-box">
-            <p class="lable lable-nome">Nome:</p>
-            <h3 class="nome"> Martina </h3>
-          </div>
-          <div class="box cognome-box">
-            <p class="lable lable-cognome">Cognome:</p>
-            <h3 class="cognome">Ria</h3>
-          </div>
-          <div class="eta-box">
-            <p class="eta-stringa"><span class="eta">31</span> anni</p>
-          </div>
-        </div>
+      <!-- form -->
+      <h2>Inserisci un nuovo studente</h2>
+      <div class="form flex-container">
+        <input id="nome" type="text" placeholder="Nome" name="" value="">
+        <input id="cognome" type="text" placeholder="Cognome" name="" value="">
+        <input id="eta" type="number" placeholder="Età" name="" value="">
+        <button type="button" name="button"> Inserisci </button>
       </div>
+
+      <h2>Scheda Studenti</h2>
+      <!-- template handlebars -->
+      <script id="template-scheda-studente-handlebars" type="text/x-handlebars-template">
+
+        <div class="scheda-studente flex-container">
+          <!-- flex-item 1 (img) -->
+          <img src="https://www.allthetests.com/quiz22/picture/pic_1171831236_1.png" alt="avatar">
+          <!-- flex-item 2 (credenziali)-->
+          <div class="credenziali flex-container">
+            <div class="box nome-box">
+              <p class="lable lable-nome">Nome:</p>
+              <h3 class="nome"> {{nome}} </h3>
+            </div>
+            <div class="box cognome-box">
+              <p class="lable lable-cognome">Cognome:</p>
+              <h3 class="cognome">{{cognome}}</h3>
+            </div>
+            <div class="eta-box">
+              <p class="eta-stringa"><span class="eta">{{eta}}</span> anni</p>
+            </div>
+          </div><!-- / (credenziali) -->
+
+        </div> <!-- / scheda-studente -->
+
+      </script> <!--/  template handlebars -->
+
     </main>
     <!-- JS -->
     <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="main.js"></script>
+
   </body>
 </html>

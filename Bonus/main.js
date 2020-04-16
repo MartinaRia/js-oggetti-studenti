@@ -3,22 +3,11 @@ Curo per bene l’output dell’elenco studenti, creando un layout carino;
 il “blocchetto studente” in pagina, sarà uguale per tutti, quindi potrei usare handlebars per gestire i blocchetti;
 varie che vi vengono in mente per sperimentare;*/
 
+
+/* ------- STAMPA IN HTML GLI OGGETTI DELL'ARRAY STUDENTI ------*/
 $( document ).ready(function() {
   console.log( "all good!" );
 
-  // - Creare un oggetto che descriva uno studente con le seguenti proprietà: nome, cognome e età.
-  var studente = {
-    'nome' : 'Veronica',
-    'cognome' : 'Ciccone',
-    'eta' : 61
-  };
-
-  //- Stampare a schermo attraverso il for in tutte le proprietà;
-  for (var key in studente) {
-    $('.features-studente').append(key + ' : ' + studente[key] + '<br>');
-  }
-
-  //- Creare un array di oggetti di studenti.
   var studenti = [
     {
       'nome' : 'Stefani',
@@ -37,40 +26,50 @@ $( document ).ready(function() {
     },
   ];
 
-  //- Ciclare su tutti gli studenti e stampare per ognuno nome e cognome;
-  //variante 1
+  /*** ----- Handlebars ---- ***/
+  // 1 Organizzare il template
+  var source = $("#template-scheda-studente-handlebars").html(); //salvare il selettore del template in una var
+  var template = Handlebars.compile(source); // "il template da compilare è questo"
+
+  // 2 organizzare i contenuti che popolano il template
   for (var i = 0; i < studenti.length; i++) {
-    $('.generalita-studenti-1').append(
-      'nome: ' + studenti[i].nome + '<br>' +
-      'cognome: ' + studenti[i].cognome + '<br>' + '--' + '<br>');
+    var context = {
+      'nome': studenti[i].nome,
+      'cognome': studenti[i].cognome,
+      'eta': studenti[i].eta
+    };
+    var html = template(context); //abbinare template a contenuto
+
+    // appendi il div con la risposta random nel tread
+    $('main').append(html);
   }
-  //variante 2
-  // for (var i = 0; i < studenti.length; i++) {
-  //   for (var key in studenti[i]) {
-  //     console.log(studenti[nome], studenti[cognome]);
-  //   }
-  // }
 
 
+  /* ------- INSERISCI NUOVO STUDENTE NELL'ARRAY  ------*/
 
-  // - Dare la possibilità all’utente attraverso 3 prompt di aggiungere un nuovo oggetto studente inserendo nell’ordine: nome, cognome e età.
-/*  var nomeUtente = prompt('Inserire nome studente');
-  var cognomeUtente = prompt('Inserire cognome studente');
-  var etaUtente = parseInt(prompt('Inserire età studente'));*/
+  $('button').click(
+    function(){
+      var nomeUtente = $('#nome').val();
+      var cognomeUtente = $('#cognome').val();
+      var etaUtente = $('#eta').val();
 
-  var studenteInserito = {
-    'nome' : nomeUtente,
-    'cognome' : cognomeUtente,
-    'eta' : etaUtente
-  };
+      var studenteInserito = {
+        'nome' : nomeUtente,
+        'cognome' : cognomeUtente,
+        'eta' : etaUtente
+      };
 
-  studenti.push(studenteInserito);
+      studenti.push(studenteInserito);
 
-  console.log(studenti);
+      var html = template(studenteInserito);
 
-  $('.generalita-studenti-1').append(
-    'nome: ' + studenti[3].nome + '<br>' +
-    'cognome: ' + studenti[3].cognome + '<br>' + '--' + '<br>');
+      $('main').append(html);
+
+      $('input').val('');
+
+    }
+  )
+
 
 
 
