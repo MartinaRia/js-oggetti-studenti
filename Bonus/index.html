@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="it" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- css -->
+    <link rel="stylesheet" href="style.css">
+    <!-- fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@200;600&display=swap" rel="stylesheet">
+    <!-- title -->
+    <title>Oggetti Studenti Bonus</title>
+  </head>
+  <body>
+    <main>
+      <div class="scheda-studente flex-container">
+        <!-- flex-item 1 (img) -->
+        <img src="https://www.allthetests.com/quiz22/picture/pic_1171831236_1.png" alt="avatar">
+        <!-- flex-item 2 (credenziali)-->
+        <div class="credenziali flex-container">
+          <div class="box nome-box">
+            <p class="lable lable-nome">Nome:</p>
+            <h3 class="nome"> Martina </h3>
+          </div>
+          <div class="box cognome-box">
+            <p class="lable lable-cognome">Cognome:</p>
+            <h3 class="cognome">Ria</h3>
+          </div>
+          <div class="eta-box">
+            <p class="eta-stringa"><span class="eta">31</span> anni</p>
+          </div>
+        </div>
+      </div>
+    </main>
+    <!-- JS -->
+    <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="main.js"></script>
+  </body>
+</html>
